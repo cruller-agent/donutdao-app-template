@@ -317,3 +317,355 @@ import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 ---
 
 **Start building beautiful DonutDAO apps!** 🍩⚙️
+
+---
+
+## Typography (from GlazeCorp)
+
+### Fonts
+
+Heesho uses **Google Fonts**:
+
+```typescript
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+});
+```
+
+**Apply in layout:**
+```jsx
+<body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+```
+
+**Usage:**
+- **Inter** - Default sans-serif for all UI text
+- **JetBrains Mono** - Monospace for code, addresses, numbers
+
+---
+
+## UI Components (from GlazeCorp)
+
+### Icons: Lucide React
+
+```bash
+npm install lucide-react@0.309.0
+```
+
+```jsx
+import { Wallet, Users, BarChart3, Search } from "lucide-react";
+
+<Wallet size={20} className="text-donut-400" />
+```
+
+**Why Lucide:**
+- Beautiful, consistent icon set
+- Tree-shakeable (import only what you need)
+- Perfect stroke width for modern UI
+- Matches GlazeCorp aesthetic
+
+### Button Component
+
+```tsx
+// components/ui/Button.tsx
+"use client";
+
+import React from "react";
+
+type ButtonVariant = "primary" | "secondary" | "ghost" | "cyber";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  fullWidth?: boolean;
+}
+
+const baseStyles =
+  "relative flex items-center justify-center font-medium uppercase tracking-wider transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed outline-none focus:ring-2 focus:ring-donut-500/50 focus:ring-offset-2 focus:ring-offset-corp-950";
+
+const variantStyles: Record<ButtonVariant, string> = {
+  primary:
+    "bg-donut-500 text-white hover:bg-donut-600 shadow-lg shadow-donut-500/25 hover:shadow-donut-500/40 border border-transparent rounded-lg",
+  secondary:
+    "bg-corp-800 border border-corp-700 text-corp-200 hover:border-donut-500/40 hover:text-corp-50 rounded-lg hover:shadow-[0_0_10px_rgba(236,72,153,0.1)]",
+  ghost:
+    "bg-transparent text-corp-400 hover:text-corp-50 hover:bg-corp-800 rounded-lg",
+  cyber:
+    "bg-corp-900 border border-donut-500/50 text-donut-400 hover:bg-donut-500 hover:text-white rounded-lg shadow-[0_0_10px_rgba(236,72,153,0.15)] hover:shadow-[0_0_20px_rgba(236,72,153,0.4)]",
+};
+
+export function Button({
+  children,
+  variant = "primary",
+  fullWidth = false,
+  className = "",
+  disabled,
+  ...props
+}: ButtonProps) {
+  const widthClass = fullWidth ? "w-full py-3.5 text-base" : "px-4 py-2 text-sm";
+
+  return (
+    <button
+      className={`${baseStyles} ${variantStyles[variant]} ${widthClass} ${className}`}
+      disabled={disabled}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+**Usage:**
+```jsx
+<Button variant="primary">Connect Wallet</Button>
+<Button variant="secondary">Cancel</Button>
+<Button variant="ghost">Settings</Button>
+<Button variant="cyber">Launch 🚀</Button>
+```
+
+### Card Component
+
+```tsx
+// components/ui/Card.tsx
+"use client";
+
+import React from "react";
+
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+  title?: string;
+  icon?: React.ReactNode;
+  rightHeader?: React.ReactNode;
+  noPadding?: boolean;
+  size?: "sm" | "default" | "lg";
+}
+
+export function Card({
+  children,
+  className = "",
+  title,
+  icon,
+  rightHeader,
+  noPadding = false,
+  size = "default",
+}: CardProps) {
+  const paddingClass = noPadding ? "" : size === "sm" ? "p-3" : size === "lg" ? "p-5" : "p-4";
+
+  return (
+    <div
+      className={`
+        relative flex flex-col overflow-hidden
+        bg-[#131313] rounded-xl
+        ${className}
+      `}
+    >
+      {/* Header */}
+      {(title || rightHeader) && (
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5">
+          <div className="flex items-center gap-2">
+            {icon && <span className="text-donut-400">{icon}</span>}
+            {title && (
+              <span className="text-sm font-medium text-corp-300">
+                {title}
+              </span>
+            )}
+          </div>
+          {rightHeader && <div>{rightHeader}</div>}
+        </div>
+      )}
+
+      {/* Content */}
+      <div className={`flex-1 flex flex-col min-h-0 ${paddingClass}`}>
+        {children}
+      </div>
+    </div>
+  );
+}
+```
+
+**Usage:**
+```jsx
+<Card title="Your Balance" icon={<Wallet size={16} />}>
+  <p>1,234 DONUT</p>
+</Card>
+
+<Card 
+  title="Stats" 
+  rightHeader={<button>Refresh</button>}
+  size="lg"
+>
+  <div>Content...</div>
+</Card>
+```
+
+### Input Component
+
+```tsx
+// components/ui/Input.tsx
+"use client";
+
+import * as React from "react";
+import { Search } from "lucide-react";
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  icon?: React.ReactNode;
+}
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className = "", icon, ...props }, ref) => {
+    return (
+      <div className="relative">
+        {icon && (
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-corp-500">
+            {icon}
+          </div>
+        )}
+        <input
+          ref={ref}
+          className={`w-full bg-[#232323] rounded-xl px-4 py-3 text-sm text-corp-50 placeholder:text-corp-500 focus:outline-none transition-colors ${
+            icon ? "pl-10" : ""
+          } ${className}`}
+          {...props}
+        />
+      </div>
+    );
+  }
+);
+
+Input.displayName = "Input";
+
+export function SearchInput(props: Omit<InputProps, "icon">) {
+  return <Input icon={<Search size={18} />} {...props} />;
+}
+```
+
+**Usage:**
+```jsx
+<Input placeholder="Enter amount..." />
+<Input icon={<Wallet size={18} />} placeholder="Wallet address..." />
+<SearchInput placeholder="Search tokens..." />
+```
+
+---
+
+## Complete Example App
+
+```tsx
+// app/page.tsx
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
+import { Wallet, TrendingUp, Users } from "lucide-react";
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-donutdao-glow">
+      {/* Hero */}
+      <section className="container mx-auto px-4 py-20">
+        <h1 className="text-5xl font-bold text-gradient mb-6 text-center">
+          DonutDAO
+        </h1>
+        <p className="text-corp-400 text-center text-lg mb-8 max-w-2xl mx-auto">
+          Build fair, transparent apps with revenue routing to gDONUT holders
+        </p>
+        
+        <div className="flex justify-center gap-4">
+          <Button variant="primary">
+            <Wallet size={18} />
+            Connect Wallet
+          </Button>
+          <Button variant="secondary">Learn More</Button>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card 
+            title="Total Value Locked" 
+            icon={<TrendingUp size={16} />}
+            size="lg"
+          >
+            <p className="text-3xl font-bold text-donut-400 mt-2">$1.2M</p>
+            <p className="text-corp-500 text-sm mt-1">+12.5% this week</p>
+          </Card>
+
+          <Card 
+            title="DONUT Holders" 
+            icon={<Users size={16} />}
+            size="lg"
+          >
+            <p className="text-3xl font-bold text-corp-50 mt-2">3,421</p>
+            <p className="text-corp-500 text-sm mt-1">Across Base</p>
+          </Card>
+
+          <Card 
+            title="Staked DONUT" 
+            icon={<Wallet size={16} />}
+            size="lg"
+          >
+            <p className="text-3xl font-bold text-corp-50 mt-2">456K</p>
+            <p className="text-corp-500 text-sm mt-1">Earning rewards</p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Interactive Section */}
+      <section className="container mx-auto px-4 py-12">
+        <Card title="Stake Your DONUT" size="lg" className="max-w-md mx-auto">
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm text-corp-400 mb-2 block">Amount</label>
+              <Input placeholder="0.00" type="number" />
+            </div>
+            
+            <div className="flex justify-between text-sm">
+              <span className="text-corp-500">Available:</span>
+              <span className="text-corp-50">1,234 DONUT</span>
+            </div>
+
+            <Button variant="cyber" fullWidth>
+              Stake & Earn 🍩
+            </Button>
+          </div>
+        </Card>
+      </section>
+    </div>
+  );
+}
+```
+
+---
+
+## Summary: Heesho's Stack
+
+**Typography:**
+- Inter (sans-serif)
+- JetBrains Mono (monospace)
+
+**Icons:**
+- lucide-react@0.309.0
+
+**Components:**
+- Custom Button (4 variants: primary, secondary, ghost, cyber)
+- Custom Card (with optional header, icon, sizes)
+- Custom Input (with optional icon)
+
+**Design:**
+- Dark grayscale (#131313, #232323)
+- Pink accent (#ec4899)
+- Rounded-xl borders (12px)
+- Subtle shadows and glows
+- Uppercase tracking on buttons
+- Focus rings on all interactive elements
+
+**The vibe:**
+Clean, modern, slightly futuristic. "Evil megacorp aesthetic" with a donut twist. 🍩
