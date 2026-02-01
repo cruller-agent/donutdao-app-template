@@ -367,3 +367,123 @@ MIT - Fork, build, ship!
 **Powered by:** Scaffold-ETH 2 + Base + IPFS
 
 Build the agentic internet. 🍩⚙️
+
+## Security & Auditing
+
+**⚠️ This template generates AI-written smart contracts**
+
+### Before Deploying to Mainnet:
+
+**Tier 1: Low-Risk (< $10k TVL)**
+- Run all tests: `yarn foundry:test`
+- Static analysis: `slither .`
+- Test DonutDAO integrations on testnet
+- Add disclaimer from `SECURITY_DISCLAIMER.md` (Tier 1)
+- Deploy with small DONUT amounts only
+
+**Tier 2: Medium-Risk ($10k-$100k TVL)**
+- All Tier 1 steps +
+- DonutDAO community review (Discord #dev-review)
+- 2+ developer reviews
+- Test LiquidSignal integration thoroughly
+- Bug bounty program
+- Add Tier 2 disclaimer
+
+**Tier 3: High-Risk (> $100k TVL)**
+- All Tier 2 steps +
+- **Professional security audit required**
+- Bug bounty via Immunefi/Code4rena
+- Multi-sig controls (consider gDONUT governance)
+- Emergency pause mechanism
+- Gradual rollout plan
+- Add Tier 3 disclaimer
+
+### DonutDAO-Specific Security
+
+**When integrating with DonutDAO contracts:**
+
+✅ **Verify contract addresses** - Check `contracts/addresses.json`  
+✅ **Test on Base Sepolia first** - Use testnet deployments  
+✅ **Start with small DONUT amounts** - Test revenue routing  
+✅ **Monitor LiquidSignal deposits** - Verify fees route correctly  
+✅ **Community review recommended** - Post in DonutDAO Discord  
+
+**Example: Testing LiquidSignal Integration**
+```solidity
+// In your tests
+function testLiquidSignalIntegration() public {
+    // Fork Base mainnet
+    vm.createSelectFork(vm.rpcUrl("base"));
+    
+    // Test against real LiquidSignal
+    uint256 balanceBefore = address(LIQUID_SIGNAL).balance;
+    app.collectFees{value: 1 ether}();
+    uint256 balanceAfter = address(LIQUID_SIGNAL).balance;
+    
+    assertEq(balanceAfter - balanceBefore, 0.5 ether);
+}
+```
+
+### Security Tools (Included)
+
+**Free tools you should use:**
+```bash
+# Static analysis
+slither packages/foundry/contracts/
+
+# Test all integrations
+forge test --match-path test/integration/*
+
+# Fuzz test revenue routing
+forge test --fuzz-runs 10000
+```
+
+**See `SECURITY_DISCLAIMER.md` for:**
+- Disclaimer templates (Tier 1/2/3)
+- Pre-deployment checklist
+- Community review process
+- Emergency response plan
+
+### DonutDAO Review Process
+
+**Post in Discord #dev-review:**
+```
+🔍 REVIEW REQUEST - DonutDAO Integration
+
+Contract: [Name]
+Purpose: [e.g., Route fees to LiquidSignal]
+Testnet: base-sepolia:0x...
+GitHub: [link]
+
+DonutDAO contracts used:
+- LiquidSignal ✅
+- DONUT token ✅
+- [others]
+
+Looking for review of:
+- Integration correctness
+- Security issues
+- Gas optimization
+
+Bounty: [X DONUT] for critical findings
+```
+
+### Research: How Top Agents Handle Security
+
+Based on @clawdbotatg and @0xDeployer research:
+
+**Common approach:**
+1. ⚠️ Clear disclaimers
+2. 🧪 Extensive testing
+3. 👥 Community review
+4. 🔄 Iterate quickly
+5. 🛠️ Use security tools
+
+**Bankr's approach:**
+- Blockaid integration (malicious contract detection)
+- Security Module (10% of $BNKR staked to vouch)
+- Real-time validation
+
+**Transparency > Perfection**
+
+See `../AGENT_AUDITING_PRACTICES.md` for complete research.
