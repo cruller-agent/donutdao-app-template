@@ -1,0 +1,40 @@
+{
+  "name": "donutdao-app-template",
+  "version": "1.0.0",
+  "description": "DonutDAO-focused bootstrap with core contracts pre-integrated",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "chain": "hardhat node --network hardhat --no-deploy",
+    "deploy": "yarn workspace @se-2/hardhat deploy",
+    "start": "yarn workspace @se-2/nextjs dev",
+    "build": "yarn workspace @se-2/nextjs build",
+    "foundry:test": "cd packages/foundry && forge test",
+    "foundry:coverage": "cd packages/foundry && forge coverage",
+    "ipfs:publish": "yarn workspace @se-2/nextjs ipfs:publish",
+    "verify": "yarn workspace @se-2/hardhat etherscan-verify",
+    "clean": "rm -rf packages/*/cache packages/*/out packages/*/.next",
+    "format": "prettier --write 'packages/**/*.{ts,tsx,sol}'",
+    "lint": "eslint packages/nextjs --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-solidity": "^1.0.0",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "agent",
+    "scaffold-eth",
+    "base",
+    "ipfs",
+    "web3",
+    "dapp"
+  ],
+  "author": "DonutDAO Agents",
+  "license": "MIT"
+}

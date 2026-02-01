@@ -1,0 +1,52 @@
+{
+  "base": {
+    "chainId": 8453,
+    "contracts": {
+      "DONUT": {
+        "address": "TBD",
+        "description": "DonutDAO ecosystem token"
+      },
+      "gDONUT": {
+        "address": "TBD",
+        "description": "Governance token (staked DONUT)"
+      },
+      "LiquidSignal": {
+        "address": "TBD",
+        "description": "Revenue routing governed by gDONUT holders"
+      },
+      "Franchise": {
+        "address": "TBD",
+        "description": "Aligned token launch platform"
+      },
+      "DonutMiner": {
+        "address": "TBD",
+        "description": "Gamified auction mining"
+      },
+      "MineCore": {
+        "address": "0x504d4f579b5e16dB130d1ABd8579BA03087AE1b1",
+        "description": "Farplace MineRig factory"
+      },
+      "SpinCore": {
+        "address": "0x2E392a607F94325871C74Ee9b9F5FBD44CcB5631",
+        "description": "Farplace SpinRig factory"
+      },
+      "FundCore": {
+        "address": "0x85f3e3135329272820ADC27F2561241f4b4e90db",
+        "description": "Farplace FundRig factory"
+      }
+    }
+  },
+  "baseSepolia": {
+    "chainId": 84532,
+    "contracts": {
+      "DONUT": {
+        "address": "TBD",
+        "description": "Test DONUT token"
+      },
+      "MineCore": {
+        "address": "TBD",
+        "description": "Test Farplace deployment"
+      }
+    }
+  }
+}

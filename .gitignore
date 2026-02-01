@@ -1,0 +1,62 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+.yarn/
+.pnp.*
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+
+# Foundry
+cache/
+out_forge/
+broadcast/
+lib/
+
+# Hardhat
+artifacts/
+cache_hardhat/
+deployments/
+typechain/
+typechain-types/
+
+# Testing
+coverage/
+.coverage/
+lcov.info
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary
+tmp/
+temp/
+*.tmp
+.turbo/
+
+# IPFS
+.ipfs/
