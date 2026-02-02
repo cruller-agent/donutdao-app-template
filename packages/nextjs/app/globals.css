@@ -2,27 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   DONUTDAO - Design System
-   Based on GlazeCorp: Grayscale + Pink Accent
-   Adapted for DonutDAO aesthetic
-   ============================================ */
-
 @layer base {
   :root {
-    /* DonutDAO Brand Colors (pink/donut theme) */
     --donut-50: 253 242 248;
     --donut-100: 252 231 243;
     --donut-200: 251 207 232;
     --donut-300: 249 168 212;
     --donut-400: 244 114 182;
-    --donut-500: 236 72 153;  /* Primary pink */
+    --donut-500: 236 72 153;
     --donut-600: 219 39 119;
     --donut-700: 190 24 93;
     --donut-800: 157 23 77;
     --donut-900: 131 24 67;
-
-    /* Corporate Grays */
     --corp-50: 250 250 250;
     --corp-100: 244 244 245;
     --corp-200: 228 228 231;
@@ -34,297 +25,55 @@
     --corp-800: 39 39 42;
     --corp-900: 24 24 27;
     --corp-950: 9 9 11;
-
-    /* Semantic */
-    --background: var(--corp-950);
-    --foreground: var(--corp-50);
+    --background: 9 9 11;
+    --foreground: 250 250 250;
     --card: 15 15 16;
-    --card-foreground: var(--corp-50);
-    --muted: var(--corp-900);
-    --muted-foreground: var(--corp-400);
-    --accent: var(--donut-500);
+    --card-foreground: 250 250 250;
+    --muted: 24 24 27;
+    --muted-foreground: 161 161 170;
+    --accent: 236 72 153;
     --accent-foreground: 255 255 255;
-    --border: var(--corp-800);
-    --input: var(--corp-800);
-    --ring: var(--donut-500);
-    --destructive: 239 68 68;
-    --destructive-foreground: var(--corp-50);
-    --success: 34 197 94;
-    --success-foreground: var(--corp-50);
-
-    /* Radius */
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 236 72 153;
     --radius: 0.5rem;
   }
 }
 
-/* ============================================
-   Reset & Base Typography
-   ============================================ */
-
-@layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    height: 100%;
-    width: 100%;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  body {
-    height: 100%;
-    width: 100%;
-    background-color: rgb(var(--background));
-    color: rgb(var(--foreground));
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  h1 {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-feature-settings: "cv02", "cv03", "cv04", "cv11"; }
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ============================================
-   Hidden Scrollbar
-   ============================================ */
+::selection { background-color: rgb(236 72 153); color: white; }
+*:focus-visible { outline: 2px solid rgb(236 72 153); outline-offset: 2px; }
 
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-*::-webkit-scrollbar {
-  display: none;
-}
-
-/* ============================================
-   Selection
-   ============================================ */
-
-::selection {
-  background-color: rgb(var(--donut-500));
-  color: white;
-}
-
-/* ============================================
-   Focus States
-   ============================================ */
-
-@layer base {
-  *:focus-visible {
-    outline: 2px solid rgb(var(--donut-500));
-    outline-offset: 2px;
-  }
-}
-
-/* ============================================
-   DonutDAO Background Effects
-   ============================================ */
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; }
 
 @layer utilities {
-  /* Donut pattern backgrounds */
-  .bg-donuts {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='12' stroke='rgba(236,72,153,0.04)' stroke-width='2' fill='none'/%3E%3Ccircle cx='30' cy='30' r='5' stroke='rgba(236,72,153,0.03)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-size: 60px 60px;
-  }
-
-  .bg-donuts-large {
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='40' stroke='rgba(236,72,153,0.025)' stroke-width='2' fill='none'/%3E%3Ccircle cx='100' cy='100' r='16' stroke='rgba(255,255,255,0.015)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  /* Premium DonutDAO gradients */
+  .bg-donuts { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='12' stroke='rgba(236,72,153,0.04)' stroke-width='2' fill='none'/%3E%3Ccircle cx='30' cy='30' r='5' stroke='rgba(236,72,153,0.03)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-size: 60px 60px; }
   .bg-donutdao {
-    background: #000;
+    background: rgb(var(--background));
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(236, 72, 153, 0.15), transparent),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(236, 72, 153, 0.08), transparent),
-      rgb(var(--corp-950));
+      radial-gradient(ellipse 100% 60% at 20% 20%, rgba(236, 72, 153, 0.08), transparent),
+      radial-gradient(ellipse 80% 50% at 80% 80%, rgba(236, 72, 153, 0.05), transparent);
   }
-
-  .bg-donutdao-glow {
-    background: #000;
-    background-image:
-      radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 0% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 100% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 40%),
-      linear-gradient(to bottom, rgb(var(--corp-950)), #000);
-  }
-
-  .bg-glass {
-    background: rgba(var(--corp-900), 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
+  .bg-glass { background: rgba(24, 24, 27, 0.8); backdrop-filter: blur(20px); }
+  .text-glow { text-shadow: 0 0 40px rgba(236, 72, 153, 0.4); }
+  .text-gradient { background: linear-gradient(135deg, rgb(var(--foreground)) 0%, rgb(244 114 182)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 }
-
-/* ============================================
-   Text Effects
-   ============================================ */
-
-@layer utilities {
-  .text-glow {
-    text-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, rgb(var(--corp-50)) 0%, rgb(var(--donut-400)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-}
-
-/* ============================================
-   Card Styles
-   ============================================ */
 
 @layer components {
-  .card-donut {
-    background: rgb(var(--card));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius);
-  }
-
-  .card-donut-glow {
-    background: rgb(var(--card));
-    border: 1px solid rgba(236, 72, 153, 0.2);
-    border-radius: var(--radius);
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.1);
-  }
-}
-
-/* ============================================
-   Button Styles
-   ============================================ */
-
-@layer components {
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius);
-    transition: all 150ms ease;
-    cursor: pointer;
-  }
-
-  .btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .btn-primary {
-    background: rgb(var(--donut-500));
-    color: white;
-  }
-
-  .btn-primary:hover:not(:disabled) {
-    background: rgb(var(--donut-600));
-  }
-
-  .btn-secondary {
-    background: rgb(var(--corp-800));
-    color: rgb(var(--corp-100));
-    border: 1px solid rgb(var(--corp-700));
-  }
-
-  .btn-secondary:hover:not(:disabled) {
-    background: rgb(var(--corp-700));
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: rgb(var(--corp-300));
-  }
-
-  .btn-ghost:hover:not(:disabled) {
-    background: rgb(var(--corp-800));
-    color: rgb(var(--corp-100));
-  }
-}
-
-/* ============================================
-   Input Styles
-   ============================================ */
-
-@layer components {
-  .input-donut {
-    width: 100%;
-    background: rgb(var(--corp-900));
-    border: 1px solid rgb(var(--border));
-    border-radius: var(--radius);
-    padding: 0.625rem 0.875rem;
-    font-size: 0.875rem;
-    color: rgb(var(--foreground));
-    transition: border-color 150ms ease, box-shadow 150ms ease;
-  }
-
-  .input-donut::placeholder {
-    color: rgb(var(--corp-500));
-  }
-
-  .input-donut:focus {
-    outline: none;
-    border-color: rgb(var(--donut-500));
-    box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
-  }
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.3s ease-out;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .card-donut { @apply bg-[rgb(var(--card))] border border-[rgb(var(--border))] rounded-[var(--radius)]; }
+  .card-glow { @apply border-pink-500/30 shadow-glow-lg hover:shadow-glow-xl hover:-translate-y-2 transition-all duration-500; }
+  .btn { @apply inline-flex items-center justify-center gap-2 font-medium text-sm px-4 py-2 rounded-[var(--radius)] transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply bg-[rgb(var(--donut-500))] text-white hover:bg-[rgb(var(--donut-600))] shadow-glow; }
+  .input { @apply w-full bg-[rgb(var(--corp-900))] border border-[rgb(var(--border))] rounded-[var(--radius)] px-3.5 py-2 text-sm focus:border-[rgb(var(--donut-500))] focus:ring-2 ring-[rgba(236,72,153,0.2)]; }
 }
