@@ -156,13 +156,13 @@ See [addresses.json](./donutdao-contracts/addresses.json) for complete list.
 
 ## Resources
 
+- **Glaze Corp**: [https://www.glazecorp.io/](https://www.glazecorp.io/) - Builder of DONUT infrastructure
 - **Documentation**: [docs/](./donutdao-contracts/docs/)
 - **Examples**: [src/examples/](./donutdao-contracts/src/examples/)
 - **Source Repos**:
   - [Liquid Signal Governance](https://github.com/Heesho/liquid-signal-governance)
   - [Donut Miner](https://github.com/Heesho/donut-miner)
   - [Franchise](https://github.com/Heesho/miner-launchpad-foundry)
-- **Community**: [Discord](https://discord.gg/donutdao)
 
 ## Development
 
