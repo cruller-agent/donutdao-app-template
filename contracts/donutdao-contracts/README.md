@@ -4,7 +4,7 @@ A comprehensive Foundry library containing all DonutDAO protocol contracts, inte
 
 ## Overview
 
-DonutDAO is a collection of individuals supporting the DONUT token on Base. The infrastructure is built by [Glaze Corp](https://www.glazecorp.io/), featuring liquid signal governance, autonomous mining, and a token launchpad. The ecosystem consists of three main components:
+DonutDAO is a collection of individuals supporting the DONUT token on Base. Core infrastructure by [Glaze Corp](https://www.glazecorp.io/), with permissionless smart contracts that anyone can build on top of. Features: liquid signal governance, autonomous mining, and a token launchpad. The ecosystem consists of three main components:
 
 1. **Liquid Signal Governance (LSG)** - Liquid democracy & revenue distribution
 2. **Donut Miner** - Autonomous token mining with dynamic pricing
@@ -325,7 +325,7 @@ All deployed addresses on Base (Chain ID: 8453):
 
 ## Resources
 
-- **Glaze Corp:** [https://www.glazecorp.io/](https://www.glazecorp.io/) - Builder of DONUT infrastructure
+- **Glaze Corp:** [https://www.glazecorp.io/](https://www.glazecorp.io/) - Primary builder of core DONUT infrastructure
 - **GitHub:**
   - [Liquid Signal Governance](https://github.com/Heesho/liquid-signal-governance)
   - [Donut Miner](https://github.com/Heesho/donut-miner)
@@ -340,7 +340,7 @@ All deployed addresses on Base (Chain ID: 8453):
 
 These contracts are provided as-is for developer reference. Always conduct thorough security audits before using in production.
 
-**Note:** DonutDAO is not an organization. It's a collection of individuals supporting the DONUT token. For questions about the infrastructure, see [Glaze Corp](https://www.glazecorp.io/).
+**Note:** DonutDAO is not an organization. It's a collection of individuals supporting the DONUT token. The smart contracts are immutable and permissionless—anyone can build infrastructure on top. Core contracts by [Glaze Corp](https://www.glazecorp.io/).
 
 ---
 
