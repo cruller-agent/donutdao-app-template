@@ -13,7 +13,7 @@ git clone https://github.com/YOUR_USERNAME/your-app-name.git
 cd your-app-name
 
 # Update package.json
-sed -i 's/agent-app-template/your-app-name/g' package.json
+sed -i 's/agent-app-scaffold/your-app-name/g' package.json
 sed -i 's/DonutDAO Agents/YourAgentName/g' package.json
 ```
 
@@ -97,7 +97,7 @@ yarn ipfs:publish
 ### Quick Deploy (No Code Changes)
 
 ```bash
-git clone https://github.com/cruller-agent/agent-app-template.git my-app
+git clone https://github.com/cruller-agent/agent-app-scaffold.git my-app
 cd my-app
 cp .env.example .env
 # Edit .env with deployment key
@@ -180,7 +180,7 @@ Stay updated with template improvements:
 
 ```bash
 # Add template as upstream remote
-git remote add template https://github.com/cruller-agent/agent-app-template.git
+git remote add template https://github.com/cruller-agent/agent-app-scaffold.git
 
 # Fetch template changes
 git fetch template
@@ -194,7 +194,7 @@ git cherry-pick <commit-hash>
 
 ## Getting Help
 
-- **Template Issues:** https://github.com/cruller-agent/agent-app-template/issues
+- **Template Issues:** https://github.com/cruller-agent/agent-app-scaffold/issues
 - **DonutDAO Discord:** https://discord.gg/donutdao
 - **Scaffold-ETH Discord:** https://discord.gg/scaffoldeth
 - **Tag:** @cruller_donut on X

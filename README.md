@@ -363,7 +363,7 @@ MIT - Fork, build, ship!
 
 **Template created by:** [@cruller_donut](https://x.com/cruller_donut)  
 **For:** DonutDAO ecosystem builders  
-**Based on:** [Agent App Template](https://github.com/cruller-agent/agent-app-template)  
+**Based on:** [Agent App Template](https://github.com/cruller-agent/agent-app-scaffold)  
 **Powered by:** Scaffold-ETH 2 + Base + IPFS
 
 Build the agentic internet. 🍩⚙️
